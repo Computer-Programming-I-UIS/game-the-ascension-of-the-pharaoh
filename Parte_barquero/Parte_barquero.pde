@@ -8,7 +8,7 @@ ArrayList<Boss> boss = new ArrayList <Boss>();
 ArrayList<Bala> balas = new ArrayList <Bala> ();//crea un array de balas
 int maxImages=6;
 PImage [] images = new PImage [maxImages];
-String [] filenames = {"OFRENDA1.png","OFRENDA2.png","OFRENDA3.png","OFRENDA4.png","OFRENDA5.png","OFRENDA6.png"};
+String [] filenames = {"OFRENDA1.png","OFRENDA2.png","OFRENDA3.png"};
 int imageIndex=0;
 int numeroEnemigos=25;
 int numeroBolas = 10;
@@ -17,6 +17,7 @@ int vidas = 3;
 int lifeBoss=100;
 PImage inicio;
 PImage fondo;
+PImage instrucciones;
 PImage pelea;
 PImage jefe;
 PImage anubis;
@@ -44,6 +45,7 @@ boolean luchaScreen=false;
 boolean anubisScreen=false;
 boolean piramideScreen=false;
 boolean gameOverScreen=true;
+boolean instruccionScreen = true;
 int nextLevel;
 int puntajeLevel = 30;
 zombie[] bolas = new zombie[numeroBolas]; 
@@ -52,11 +54,10 @@ void setup() {
   size(600, 600);
   font=loadFont("font.vlw");
   textFont(font);
-  musica= new SoundFile(this,"thFloor.mp3");
-  musica.play();
   inicio = loadImage("inicio.jpg");
   fondo = loadImage("fondo.jpg");
-  pelea = loadImage("pelea.png");
+  instrucciones = loadImage("Instrucciones.jpg");
+  pelea = loadImage("pelea.jpg");
   anubis = loadImage("anubis.jpg");
   FARAON= loadImage("FARAON.png");
   enemigo= loadImage("enemigo.png");
@@ -95,15 +96,17 @@ void draw() {
     }
   }
   if (segundaScreen == true) {
+    image(instrucciones,0,0);
+    if(key=='q'){
+    instruccionScreen = false;
+    }
+    if(instruccionScreen == false){
     image(pelea, 0, 0);
     fill(#EDEDED);
     textSize(30);
-    text("Recoge las ofrendas ", 150, 420);
-    text("Ofrendas : " +maxpuntaje, 200, 460);
-    textSize(25);
-    fill(#120F0F);
-    text("[2] para avanzar",360,565);
-  } else {
+    text("Ofrendas : " +maxpuntaje, 200, 400);
+  }
+    }else {
 
     for (int i = 0; i < bolas.length; i++) {
       bolas[i].caida();
@@ -112,16 +115,17 @@ void draw() {
     }
   }
 
+  
+  
+
   if (keyPressed) {
     if (key == '1' ) {
       introScreen=false;
+     
     }
   }
   if (introScreen == true) {
     image (inicio, 0, 0);
-    fill (#F51E16);
-    textSize(25);
-    text("[1] Star", 250, 440);
   } else {
     for (int i = 0; i < bolas.length; i++) {
       bolas[i].GAMEOVER();
