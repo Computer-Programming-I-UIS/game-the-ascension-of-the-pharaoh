@@ -1,3 +1,6 @@
+molecula[] oxigeno = new molecula[5];//total de moleculas
+PImage oxigenoo;
+
 import processing.sound.*;
 PFont font;
 SoundFile musica;
@@ -16,6 +19,7 @@ int puntaje = 0;
 int vidas = 3;
 int lifeBoss=100;
 PImage inicio;
+PImage win;
 PImage fondo;
 PImage instrucciones;
 PImage pelea;
@@ -40,6 +44,7 @@ int maxLifeBoss=0;
 int savedTime;
 int totalTime = 15000;
 boolean introScreen = true;
+boolean winScreen=true;
 boolean segundaScreen=true;
 boolean luchaScreen=false;
 boolean anubisScreen=false;
@@ -52,9 +57,11 @@ zombie[] bolas = new zombie[numeroBolas];
 
 void setup() {      
   size(600, 600);
-  font=loadFont("font.vlw");
-  textFont(font);
+  
+  
+  oxigenoo = loadImage("oxigeno.png");
   inicio = loadImage("inicio.jpg");
+  win = loadImage("win.jpg");
   fondo = loadImage("fondo.jpg");
   instrucciones = loadImage("Instrucciones.jpg");
   pelea = loadImage("pelea.jpg");
@@ -84,6 +91,9 @@ void setup() {
   boss.add(nvoBoss);
   
   }
+  for(int i=0; i<oxigeno.length; i++) {
+    oxigeno[i] = new molecula(random(300,500),random(300,500),50);  
+  }
 }
 
 void draw() {
@@ -104,7 +114,7 @@ void draw() {
     image(pelea, 0, 0);
     fill(#EDEDED);
     textSize(30);
-    text("Ofrendas : " +maxpuntaje, 200, 400);
+    text("Ofrendas max : " +maxpuntaje, 200, 400);
   }
     }else {
 
@@ -112,6 +122,12 @@ void draw() {
       bolas[i].caida();
       bolas[i].colision();
       bolas[i].puntaje();
+    }
+      for(int i=0; i<oxigeno.length; i++) { // llamados oxigeno
+     oxigeno[i].ovelocidad();
+     oxigeno[i].ocolision();
+     oxigeno[i].odisplay(); 
+     oxigeno[i].odestruir(); 
     }
   }
 
@@ -181,6 +197,12 @@ void draw() {
   fill(#FFFFFF);
   textSize(20);
   text("[esc] para salir",300,565);
+  }
+  if(winScreen==false){
+  image(win,0,0);
+  fill(#FFFFFF);
+  textSize(20);
+  text("[esc] para salir", 300,565);
   }
 }
 
