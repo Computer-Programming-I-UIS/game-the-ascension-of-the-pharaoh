@@ -16,8 +16,8 @@ class Boss {// crea una clase llamada Enemigo
   }
   void dibujar() {// dibuja los enemigos
     fill(#CECCCC);
-    ellipse (x, y, 150, 150);// crea elipses como enemigos
-    image(jefe,x-120,y-170);
+    //ellipse (x, y, 150, 150);// crea elipses como enemigos
+    image(jefe,x-90,y-30);
     
     
   }
