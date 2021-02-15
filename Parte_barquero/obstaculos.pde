@@ -1,11 +1,11 @@
-class molecula{
+class obstaculo{
   float ox;
   float oy;
   float od;
   float oxvel;
-  float oyvel;// variables oxigeno
+  float oyvel;// variables obstaculo
   
-  molecula(float oposX, float oposY, float odiametro){
+  obstaculo(float oposX, float oposY, float odiametro){
     ox = oposX;
     oy = oposY;
     od = odiametro;
@@ -31,7 +31,7 @@ class molecula{
     }
     
     void odisplay() { //imagen de oxigeno
-    image(oxigenoo, ox, oy);
+    image(calavera, ox, oy);
     }
     
   void odestruir() { // si toca un oxigeno, devuelve a la pantalla de inicio
@@ -46,8 +46,8 @@ anubisScreen=false;
 piramideScreen=false;
 
 
-        for(int i=0; i<oxigeno.length; i++) {
-         oxigeno[i] = new molecula(random(300,500),random(300,500),50); 
+        for(int i=0; i<cala.length; i++) {
+         cala[i] = new obstaculo(random(300,500),random(300,500),50); 
         
            } 
          
