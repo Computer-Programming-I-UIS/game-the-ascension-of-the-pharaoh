@@ -1,5 +1,5 @@
-molecula[] oxigeno = new molecula[5];//total de moleculas
-PImage oxigenoo;
+obstaculo[] cala = new obstaculo[5];//total de moleculas
+PImage calavera;
 
 import processing.sound.*;
 PFont font;
@@ -59,7 +59,7 @@ void setup() {
   size(600, 600);
   
   
-  oxigenoo = loadImage("oxigeno.png");
+  calavera = loadImage("calavera.png");
   inicio = loadImage("inicio.jpg");
   win = loadImage("win.jpg");
   fondo = loadImage("fondo.jpg");
@@ -91,8 +91,8 @@ void setup() {
   boss.add(nvoBoss);
   
   }
-  for(int i=0; i<oxigeno.length; i++) {
-    oxigeno[i] = new molecula(random(300,500),random(300,500),50);  
+  for(int i=0; i<cala.length; i++) {
+    cala[i] = new obstaculo(random(300,500),random(300,500),50);  
   }
 }
 
@@ -123,11 +123,11 @@ void draw() {
       bolas[i].colision();
       bolas[i].puntaje();
     }
-      for(int i=0; i<oxigeno.length; i++) { // llamados oxigeno
-     oxigeno[i].ovelocidad();
-     oxigeno[i].ocolision();
-     oxigeno[i].odisplay(); 
-     oxigeno[i].odestruir(); 
+      for(int i=0; i<cala.length; i++) { // llamados oxigeno
+     cala[i].ovelocidad();
+     cala[i].ocolision();
+     cala[i].odisplay(); 
+     cala[i].odestruir(); 
     }
   }
 
