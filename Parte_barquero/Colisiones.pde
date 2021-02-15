@@ -99,7 +99,7 @@ void colisionBalaBoss() {
         }
       }
       if (lifeBoss<=0) {
-        exit();
+        winScreen=false;
       }
     }
   }
