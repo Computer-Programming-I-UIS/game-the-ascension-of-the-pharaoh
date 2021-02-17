@@ -43,4 +43,4 @@
 
 - A Jose Eugenio Vargas Vargas por mostrar y aconsejar dificultad al juego, a Franklin Sierra, Jeremy Poveda y Valentina Beltran por probrar cada versión del juego y sugerirnos cambios.
 
-- A Jeremy Poveda por consejos y asesoría en cuanto al diseño.
+- A Jeremy Poveda  y Fabian Garcia por consejos y asesoría en cuanto al diseño.
