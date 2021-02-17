@@ -6,7 +6,7 @@
 - Cristian Manuel Sierra 
 
 ## DESCRIPCION:
-- Este juego basado en la mitologia egipcia, consiste en ayudar al faraon Narmer o mejor conocido como "El Rey Escorpion" a vencer al Dios Anubis en el inframundo y a sus demonios para asi ascender y encontrarse con el Dios RA.
+- Este juego basado en la mitologia egipcia, consiste en ayudar al faraon Narmer o mejor conocido como "El Rey Escorpion" el cual despues de su muerte en el mundo terrenal ha llegado al inframundo para vencer al Dios Anubis y a sus demonios para asi ascender, encontrarse con el Dios RA y poder tener el descanso eterno.
 
 ## CARACTERISTICAS:
 - Es un juego de plataforma, el contenido de este juego es apto para todas las edades. Puede que contenga una cantidad mínima de violencia de caricatura, de fantasía ligera, o uso poco frecuente de lenguaje moderado, pero con una gran historia y jugabilidad que cautivara al espectador.
