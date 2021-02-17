@@ -10,6 +10,7 @@
 
 ## CARACTERISTICAS:
 - Es un juego de plataforma, el contenido de este juego es apto para todas las edades. Puede que contenga una cantidad mínima de violencia de caricatura, de fantasía ligera, o uso poco frecuente de lenguaje moderado, pero con una gran historia y jugabilidad que cautivara al espectador.
+- Para que el juego funcione correctamente es importante instalar la libreria de "processing.sound".
 
 ## TRAILER - GAMEPLAY
 - Enlace: https://youtu.be/HqftXTI4cEA
