@@ -13,7 +13,8 @@
 - Para que el juego funcione correctamente es importante instalar la libreria de "processing.sound".
 
 ## TRAILER - GAMEPLAY
-- Enlace: https://youtu.be/HqftXTI4cEA
+- Gameplay: https://youtu.be/HqftXTI4cEA
+- Historia: https://youtu.be/cioF1SzCkZY
 
 ## CREDITOS:
 ### Programación:
