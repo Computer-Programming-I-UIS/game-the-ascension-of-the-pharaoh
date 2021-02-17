@@ -2,8 +2,8 @@
 ![BANNER](https://user-images.githubusercontent.com/75026781/108159875-ecd97d80-70b5-11eb-83e7-a10162c4ac3f.jpg)
 
 ## AUTORES:
-- Juan Esteban Lemus Cabrales
-- Cristian Manuel Sierra 
+- Juan Esteban Lemus Cabrales 2193048
+- Cristian Manuel Sierra 2192308
 
 ## DESCRIPCION:
 - Este juego basado en la mitologia egipcia, consiste en ayudar al faraon Narmer o mejor conocido como "El Rey Escorpion" el cual despues de su muerte en el mundo terrenal ha llegado al inframundo para vencer al Dios Anubis y a sus demonios para asi ascender, encontrarse con el Dios RA y poder tener el descanso eterno.
