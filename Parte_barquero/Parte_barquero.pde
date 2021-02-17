@@ -1,17 +1,16 @@
-obstaculo[] cala = new obstaculo[5];//total de moleculas
-PImage calavera;
-
 import processing.sound.*;
 PFont font;
 SoundFile musica;
- Nave nve = new Nave();
+Nave nve = new Nave();
 ArrayList<Bomba> bombas = new ArrayList <Bomba> ();//crea un array de balas enemigas
 ArrayList<Enemigo> enemigos = new ArrayList <Enemigo> ();// crea un array de enemigos
 ArrayList<Boss> boss = new ArrayList <Boss>();
 ArrayList<Bala> balas = new ArrayList <Bala> ();//crea un array de balas
 int maxImages=6;
 PImage [] images = new PImage [maxImages];
-String [] filenames = {"OFRENDA1.png","OFRENDA2.png","OFRENDA3.png"};
+String [] filenames = {"OFRENDA1.png", "OFRENDA2.png", "OFRENDA3.png"};
+obstaculo[] cala = new obstaculo[5];
+PImage calavera;
 int imageIndex=0;
 int numeroEnemigos=25;
 int numeroBolas = 10;
@@ -37,6 +36,7 @@ PImage OFRENDA3;
 PImage OFRENDA4;
 PImage OFRENDA5;
 PImage OFRENDA6;
+PImage credits;
 long tiempo=0;
 int maxpuntaje = 0;
 int maxvidas=0;
@@ -51,14 +51,14 @@ boolean anubisScreen=false;
 boolean piramideScreen=false;
 boolean gameOverScreen=true;
 boolean instruccionScreen = true;
+boolean creditosScreen=true;
 int nextLevel;
 int puntajeLevel = 30;
 zombie[] bolas = new zombie[numeroBolas]; 
 
 void setup() {      
   size(600, 600);
-  
-  
+  credits = loadImage("credits.jpg");
   calavera = loadImage("calavera.png");
   inicio = loadImage("inicio.jpg");
   win = loadImage("win.jpg");
@@ -73,8 +73,8 @@ void setup() {
   gameOver= loadImage("gameOver.jpg");
   jefe = loadImage("boss.png");  
   piramide = loadImage("piramides.jpg");
-  for( int i =0; i < filenames.length; i++){
-  images[i] = loadImage(filenames[i]);
+  for ( int i =0; i < filenames.length; i++) {
+    images[i] = loadImage(filenames[i]);
   }
   textSize(20);
   savedTime = millis();
@@ -86,13 +86,12 @@ void setup() {
     Enemigo nvoEnemigo= new Enemigo(i * 20 +10);
     enemigos.add(nvoEnemigo);
   }
-  for (int i=0; i<1;i++){
-  Boss nvoBoss = new Boss(i*20+10);
-  boss.add(nvoBoss);
-  
+  for (int i=0; i<1; i++) {
+    Boss nvoBoss = new Boss(i*20+10);
+    boss.add(nvoBoss);
   }
-  for(int i=0; i<cala.length; i++) {
-    cala[i] = new obstaculo(random(300,500),random(300,500),50);  
+  for (int i=0; i<cala.length; i++) {
+    cala[i] = new obstaculo(random(300, 500), random(300, 500), 50);
   }
 }
 
@@ -106,38 +105,37 @@ void draw() {
     }
   }
   if (segundaScreen == true) {
-    image(instrucciones,0,0);
-    if(key=='q'){
-    instruccionScreen = false;
+    image(instrucciones, 0, 0);
+    if (key=='q') {
+      instruccionScreen = false;
     }
-    if(instruccionScreen == false){
-    image(pelea, 0, 0);
-    fill(#EDEDED);
-    textSize(30);
-    text("Ofrendas max : " +maxpuntaje, 200, 400);
-  }
-    }else {
+    if (instruccionScreen == false) {
+      image(pelea, 0, 0);
+      fill(#EDEDED);
+      textSize(30);
+      text("Ofrendas max : " +maxpuntaje, 200, 400);
+    }
+  } else {
 
     for (int i = 0; i < bolas.length; i++) {
       bolas[i].caida();
       bolas[i].colision();
       bolas[i].puntaje();
     }
-      for(int i=0; i<cala.length; i++) { // llamados oxigeno
-     cala[i].ovelocidad();
-     cala[i].ocolision();
-     cala[i].odisplay(); 
-     cala[i].odestruir(); 
+    for (int i=0; i<cala.length; i++) { // llamados oxigeno
+      cala[i].ovelocidad();
+      cala[i].ocolision();
+      cala[i].odisplay(); 
+      cala[i].odestruir();
     }
   }
 
-  
-  
+
+
 
   if (keyPressed) {
     if (key == '1' ) {
       introScreen=false;
-     
     }
   }
   if (introScreen == true) {
@@ -151,7 +149,7 @@ void draw() {
     image (anubis, 0, 0);
     textSize(25);
     fill(#FFFBFA);
-    text("[3] para avanzar",360,565);
+    text("[3] para avanzar", 360, 565);
   } else {
     for (int i = 0; i < bolas.length; i++) {
       bolas[i].levelDos();
@@ -166,13 +164,13 @@ void draw() {
       x.dibujar();
     }
     for (Bala x : balas) {//crea balas
-    x.avanzar();
-    x.dibujar();
-  }
-   for (Bomba x : bombas) {//crea bombas
-    x.avanzar();
-    x.dibujar();
-  }
+      x.avanzar();
+      x.dibujar();
+    }
+    for (Bomba x : bombas) {//crea bombas
+      x.avanzar();
+      x.dibujar();
+    }
     colisionEnemigoNave();
     colisionBalaEnemigo();
     colisionBalaBomba();
@@ -192,17 +190,28 @@ void draw() {
       bolas[i].levelTres();
     }
   }
-  if(gameOverScreen==false){
-  image(gameOver,0,0);
-  fill(#FFFFFF);
-  textSize(20);
-  text("[esc] para salir",300,565);
+  if (gameOverScreen==false) {
+    image(gameOver, 0, 0);
+    fill(#FFFFFF);
+    textSize(20);
+    text("[esc] para salir", 300, 565);
   }
-  if(winScreen==false){
-  image(win,0,0);
-  fill(#FFFFFF);
-  textSize(20);
-  text("[esc] para salir", 300,565);
+
+  if (winScreen==false) {
+    image(win, 0, 0);
+    fill(#151212);
+    textSize(20);
+    text("Press [0] Creditos", 250, 565);
+  }
+  if (key=='0') {
+    winScreen=true;
+    creditosScreen=false;
+  }
+  if (creditosScreen==false) {
+    image(credits, 0, 0);
+    fill(#080808);
+    textSize(20);
+    text("Press [esc] para salir", 250, 500);
   }
 }
 
@@ -226,8 +235,8 @@ class zombie {
     y = y +3 ;   //VELOCIDAD
     //fill(0,10,200,60);
     //ellipse(x, y, d, d);
-   image(images[imageIndex],x,y);
-  
+    image(images[imageIndex], x, y);
+
     if (y>height) {
       x = random(600);
       y = random(-100);
@@ -243,22 +252,25 @@ class zombie {
         x = -1000;
         puntaje++;
         maxpuntaje = max(puntaje, maxpuntaje);
-        imageIndex = int(random(filenames.length));        
+        imageIndex = int(random(filenames.length));
       }
     }
   } 
 
   void puntaje () {
     fill(#DDFA0D);
+    textSize(22);
     text("Ofrendas = " +puntaje, 380, 25);
   }
-  void vidas (){
-  fill(#FFFBFA);
-  text("Amuletos: " + vidas, 355,30);
+  void vidas () {
+    fill(#FFFBFA);
+    textSize(22);
+    text("Amuletos: " + vidas, 355, 30);
   }
-  void lifeBoss(){
-  fill(#FFFBFA);
-  text("Anubis: " +lifeBoss, 30,30);
+  void lifeBoss() {
+    fill(#FFFBFA);
+    textSize(22);
+    text("Anubis: " +lifeBoss, 30, 30);
   }
 
   void GAMEOVER() {
@@ -282,14 +294,19 @@ class zombie {
   }
 
   void levelTres() {
-      if(key=='3'){
+    if (key=='3') {
       piramideScreen=true;
-      }
+    }
   }
-  
-  void levelCuatro(){
-    if(numeroEnemigos<=0){
-     exit();
+  void creditos() {
+    if (key=='c') {
+      creditosScreen=false;
+    }
+  }
+
+  void levelCuatro() {
+    if (numeroEnemigos<=0) {
+      exit();
     }
   }
 }
