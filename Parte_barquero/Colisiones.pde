@@ -101,6 +101,7 @@ void colisionBalaBoss() {
       if (lifeBoss<=0) {
         winScreen=false;
       }
+     
     }
   }
   balas.removeAll(balasElim);
