@@ -1,6 +1,14 @@
-import processing.sound.*;
-PFont font;
-SoundFile musica;
+import ddf.minim.*;
+Minim minim;
+Minim minim2;
+Minim minim3;
+Minim minim4;
+Minim minim5;
+AudioPlayer player2;
+AudioPlayer player;
+AudioPlayer player3;
+AudioPlayer player4;
+AudioPlayer player5;
 Nave nve = new Nave();
 ArrayList<Bomba> bombas = new ArrayList <Bomba> ();//crea un array de balas enemigas
 ArrayList<Enemigo> enemigos = new ArrayList <Enemigo> ();// crea un array de enemigos
@@ -9,7 +17,7 @@ ArrayList<Bala> balas = new ArrayList <Bala> ();//crea un array de balas
 int maxImages=6;
 PImage [] images = new PImage [maxImages];
 String [] filenames = {"OFRENDA1.png", "OFRENDA2.png", "OFRENDA3.png"};
-obstaculo[] cala = new obstaculo[5];
+obstaculo[] cala = new obstaculo[5];//total de moleculas
 PImage calavera;
 int imageIndex=0;
 int numeroEnemigos=25;
@@ -42,7 +50,7 @@ int maxpuntaje = 0;
 int maxvidas=0;
 int maxLifeBoss=0;
 int savedTime;
-int totalTime = 15000;
+int totalTime = 20000;
 boolean introScreen = true;
 boolean winScreen=true;
 boolean segundaScreen=true;
@@ -58,6 +66,18 @@ zombie[] bolas = new zombie[numeroBolas];
 
 void setup() {      
   size(600, 600);
+  minim = new Minim (this);
+  player = minim.loadFile("thFloor.mp3");
+  minim2 = new Minim (this);
+  player2 = minim.loadFile("Awful.mp3");
+  minim3 = new Minim (this);
+  player3 = minim.loadFile("Tak.mp3");
+  minim4 = new Minim (this);
+  player4 = minim.loadFile("Anubis.mp3");
+  player4.setGain(-10);// ajustamos el volumen inicial a uno tolerable
+  minim5 = new Minim (this);
+  player5 = minim.loadFile("Muerte.mp3");
+  player5.setGain(-15);// ajustamos el volumen inicial a uno tolerable
   credits = loadImage("credits.jpg");
   calavera = loadImage("calavera.png");
   inicio = loadImage("inicio.jpg");
@@ -93,23 +113,29 @@ void setup() {
   for (int i=0; i<cala.length; i++) {
     cala[i] = new obstaculo(random(300, 500), random(300, 500), 50);
   }
+  player.play();
 }
 
 void draw() {
   background(fondo);
+  
   //nve.avanzar();//llama la clase avanzar
   //nve.dibujar();//llama la clase dibujar
   if (keyPressed) {
     if (key == '2') {
       segundaScreen = false;
+      player2.play();
     }
   }
   if (segundaScreen == true) {
     image(instrucciones, 0, 0);
     if (key=='q') {
       instruccionScreen = false;
+      player.pause();
+      
     }
     if (instruccionScreen == false) {
+      
       image(pelea, 0, 0);
       fill(#EDEDED);
       textSize(30);
@@ -130,9 +156,6 @@ void draw() {
     }
   }
 
-
-
-
   if (keyPressed) {
     if (key == '1' ) {
       introScreen=false;
@@ -146,16 +169,19 @@ void draw() {
     }
   }
   if (luchaScreen==true) {
+    
     image (anubis, 0, 0);
     textSize(25);
     fill(#FFFBFA);
     text("[3] para avanzar", 360, 565);
   } else {
+    
     for (int i = 0; i < bolas.length; i++) {
       bolas[i].levelDos();
     }
   }
   if (piramideScreen==true) {
+    player.pause();
     image(piramide, 0, 0);
     nve.avanzar();//llama la clase avanzar
     nve.dibujar();//llama la clase dibujar  
@@ -192,6 +218,11 @@ void draw() {
   }
   if (gameOverScreen==false) {
     image(gameOver, 0, 0);
+    player5.play();
+    player4.pause();
+    player3.pause();
+    player2.pause();
+    
     fill(#FFFFFF);
     textSize(20);
     text("[esc] para salir", 300, 565);
@@ -199,6 +230,9 @@ void draw() {
 
   if (winScreen==false) {
     image(win, 0, 0);
+    player3.play();
+    player2.pause();
+    player5.pause();
     fill(#151212);
     textSize(20);
     text("Press [0] Creditos", 250, 565);
@@ -206,6 +240,9 @@ void draw() {
   if (key=='0') {
     winScreen=true;
     creditosScreen=false;
+    player4.play();
+    player3.pause();
+    player2.pause();
   }
   if (creditosScreen==false) {
     image(credits, 0, 0);
@@ -259,17 +296,14 @@ class zombie {
 
   void puntaje () {
     fill(#DDFA0D);
-    textSize(22);
     text("Ofrendas = " +puntaje, 380, 25);
   }
   void vidas () {
     fill(#FFFBFA);
-    textSize(22);
     text("Amuletos: " + vidas, 355, 30);
   }
   void lifeBoss() {
     fill(#FFFBFA);
-    textSize(22);
     text("Anubis: " +lifeBoss, 30, 30);
   }
 
