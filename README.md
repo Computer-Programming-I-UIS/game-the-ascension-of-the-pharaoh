@@ -31,8 +31,7 @@
 ![Sin título-8](https://user-images.githubusercontent.com/75026781/108950543-66341b80-7634-11eb-92db-84d92631c3d9.png)
 
 ## TRAILER - GAMEPLAY
-- Gameplay: https://youtu.be/HqftXTI4cEA
-- Historia: https://youtu.be/cioF1SzCkZY
+- Historia Gameplay: https://www.youtube.com/watch?v=IESX5Tt-TyE&feature=youtu.be
 
 ## CREDITOS:
 ### Programación:
